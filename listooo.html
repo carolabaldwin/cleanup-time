@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Up Time</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif; /* Times New Roman font */
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://t3.ftcdn.net/jpg/02/51/52/38/360_F_251523859_L2BR2nUI9qRxR63uTV60ydc4BJ1wVjng.jpg'); /* New wallpaper */
+            background-size: cover;
+            background-color: rgba(255, 255, 255, 0.2); /* 80% transparency */
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 1in; /* 1 inch top spacing */
+            padding-bottom: 2in; /* 2 inches bottom spacing */
+        }
+
+        h1 {
+            font-size: 50px;
+            color: black; /* Black color for the title */
+            font-weight: bold; /* Bold text */
+            background-color: white; /* White background for the title */
+            padding: 10px;
+            margin: 0;
+        }
+
+        button {
+            background-color: #a8d5ba; /* Pastel green */
+            border: none;
+            border-radius: 20px;
+            color: white;
+            font-size: 24px;
+            padding: 15px 30px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        button:hover {
+            background-color: #91c7a6; /* Darker green */
+            transform: scale(1.1);
+            box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        video {
+            width: 80%;
+            max-width: 640px;
+            height: 360px;
+            display: none; /* Initially hidden */
+        }
+
+        #randomName {
+            font-size: 30px;
+            color: black; /* Black color */
+            margin-top: 20px;
+            font-weight: bold; /* Bold text */
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 2px solid green; /* Green margin */
+            display: none; /* Initially hidden */
+            width: 10cm; /* 10 cm width */
+            height: 4cm; /* 4 cm length */
+            line-height: 4cm; /* Center the text vertically */
+        }
+
+        /* Adjust spacing of "NAMES" button */
+        .random-name-button {
+            margin-top: 1in; /* 1 inch from the NOW button */
+        }
+
+        /* Space between title and first button (NOW button) */
+        .space-between-title-button {
+            margin-top: 0.5in; /* Half an inch space between the title and first button */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Title with White Highlighted Background -->
+    <h1>CLEAN UP TIME</h1>
+
+    <!-- Add Half an Inch Space between Title and Button -->
+    <div class="space-between-title-button"></div>
+
+    <!-- NOW Button -->
+    <button onclick="playVideo()">NOW</button>
+
+    <!-- Video Element -->
+    <video id="videoPlayer" controls>
+        <!-- Replace with your local file path -->
+        <source src="file:///C:/Users/12345/Downloads/clean%20up%20song.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- NAMES Button -->
+    <button class="random-name-button" onclick="displayRandomName()">NAMES</button>
+
+    <!-- White Box with Green Margin for Displaying Random Name -->
+    <div id="randomName"></div>
+
+    <script>
+        // Play click sound (replace with your local file path)
+        const clickSound = new Audio('file:///C:/Users/12345/Downloads/click-234708.mp3'); // Custom click sound
+
+        function playClickSound() {
+            clickSound.play();
+        }
+
+        function playVideo() {
+            playClickSound(); // Play click sound
+            const video = document.getElementById('videoPlayer');
+            video.style.display = 'block'; // Show the video
+            video.currentTime = 0; // Reset the video to the start
+            video.play(); // Play the video automatically
+        }
+
+        // Array of names
+        const names = ["SAMUEL", "PAULLETTE", "RYAN", "BODE", "EMMY", "SEBASTIAN", "RHYLEI", "AMOY", "ISAAC", "ANDREW", "ANNA", "EASTON", "FERNANDA", "FELIX", "AUSTIN", "HOPE", "AMOURA"];
+
+        function displayRandomName() {
+            playClickSound(); // Play click sound
+
+            // Display the random name box
+            const randomNameBox = document.getElementById('randomName');
+            randomNameBox.style.display = 'block'; // Show the name display box
+
+            // Get a random name from the array
+            const randomName = names[Math.floor(Math.random() * names.length)];
+            randomNameBox.innerText = randomName; // Display the randomly chosen name
+        }
+    </script>
+</body>
+</html>
